@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "testweatherapp"
+version = "0.1.0"
+description = ""
+authors = ["Naury <koertyf@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.7"
+djangorestframework = "^3.15.2"
+punq = "^0.7.0"
+django-environ = "^0.11.2"
+pytest = "^8.2.2"
+pytest-django = "^4.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

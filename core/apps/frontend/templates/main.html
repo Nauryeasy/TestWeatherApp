@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            {% verbatim %}
+            <h1>Прогноз погоды</h1>
+            <div class="search-box">
+                <input type="text" id="city-input" placeholder="Enter city name" v-model="search_text" @input="fetchCities">
+                <button id="search-button" @click="getWeatherForecast">Search</button>
+                <ul v-if="cities.length" class="suggestions">
+                    <li v-for="(city, index) in cities.slice(0, 10)" :key="index" @click="selectCity(city.name)">
+                        {{ city.name }}
+                    </li>
+                </ul>
+            </div>
+            <div id="weather-info" class="weather-info">
+                <h2 id="city-name">{{ weather_forecast.city_name }}</h2>
+                <p>Максимальная температура: <span id="max-temp">{{ weather_forecast.max_temp }}</span> °C</p>
+                <p>Минимальная температура: <span id="min-temp">{{ weather_forecast.min_temp }}</span> °C</p>
+                <p>Средняя температура: <span id="avg-temp">{{ weather_forecast.avg_temp }}</span> °C</p>
+                <p>Максимальная скорость ветра: <span id="max-wind-speed">{{ weather_forecast.max_wind_speed }}</span> km/h</p>
+                <p>Общее количество осадков: <span id="total-precip">{{ weather_forecast.total_precip }}</span> mm</p>
+                <p>Всего снега: <span id="total-snow">{{ weather_forecast.total_snow }}</span> mm</p>
+                <p>Средняя видимость: <span id="avg-visibility">{{ weather_forecast.avg_visibility }}</span> km</p>
+                <p>Средняя влажность: <span id="avg-humidity">{{ weather_forecast.avg_humidity }}</span> %</p>
+                <p>Погодные условия: <span id="weather-condition">{{ weather_forecast.weather_condition }}</span></p>
+                <p>Будет ли сегодня дождь? <span id="will-it-rain">{{ weather_forecast.daily_will_it_rain }}</span></p>
+                <p>Будет ли сегодня снег? <span id="will-it-snow">{{ weather_forecast.daily_will_it_snow }}</span></p>
+                <p>Вероятность дождя: <span id="chance-of-rain">{{ weather_forecast.daily_chance_of_rain }}</span> %</p>
+                <p>Вероятность снега: <span id="chance-of-snow">{{ weather_forecast.daily_chance_of_snow }}</span> %</p>
+            </div>
+            {% endverbatim %}
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
