@@ -39,11 +39,6 @@ make migrate
 make superuser
 ```
 
-Для загрузки городов в базу данных
-```
-python manage.py import_cities
-```
-
 Для логов приложения
 ```
 make app-logs
