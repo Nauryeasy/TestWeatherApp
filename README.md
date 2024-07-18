@@ -44,6 +44,11 @@ make superuser
 make app-logs
 ```
 
+Если изначально городов не будет в бд нужно выполнить команду
+```
+python manage.py import_cities
+```
+
 API для получения списка городов и их количества запросов
 ```
 http://127.0.0.1:8000/api/v1/cities
